@@ -1,0 +1,81 @@
+<!doctype html>
+  <html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+      <title>User</title>
+    </head>
+    <body>
+      <nav class="navbar navbar-dark bg-dark p-0">
+        <div class="container-fluid">
+          <div class="text-white">
+            <span><strong th:text="${user.getName()}"></strong></span>
+            <span> with roles: </span>
+            <span th:each="role :${user.getRoles()}">
+            <span th:text="${role}"></span>
+            </span>
+          </div>
+          <div class="nav navbar-nav navbar-right">
+            <span><form th:action="@{/logout}" method="post">
+            <button  style="background-color: #363E3E;color:#FFF;border-color: #363E3E;" type="submit" class="btn btn-secondary">Logout</button>
+            </form></span>
+          </div>
+        </div>
+      </nav>
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-2 mt-3 px-0">
+            <ul class="nav flex-column nav-pills" role="tablist">
+              <li><a class="nav-link active" href="#User" role="tab" data-toggle="pill" aria-selected="true">User</a></li>
+            </ul>
+          </div>
+
+          <div class="col-10 bg-light" style="height: 100vh">
+            <div class="container mt-3">
+              <div class="tab-content">
+
+                <div role="tabpanel" class="tab-pane fade show active" id="User">
+                  <div class="page-header">
+                    <h2>User information-page</h2>
+                      <h5 class="card-header">About user</h5>
+
+                        <table class="table table-striped card-body">
+                          <thead>
+                            <tr>
+                              <th scope = "col">ID</th>
+                              <th scope = "col">Name</th>
+                              <th scope = "col">LastName</th>
+                              <th scope = "col">Role</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+
+                            <tr>
+                              <td th:text="${user.getId()}"></td>
+                               <td th:text="${user.getName()}"></td>
+                               <td th:text="${user.getLastName()}"></td>
+                               <td>
+                                 <span th:each="role :${user.getRoles()}">
+                                 <span th:text="${role.getName()}"></span>
+                                 </span>
+                               </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

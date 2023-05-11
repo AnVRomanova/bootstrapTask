@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+
+    <title>Hello!</title>
+
+  </head>
+  <body style="background-color: #eee;">
+    <div class="container col-6 form-group text-center">
+      <div th:if="${param.error}">
+        Invalid username and password.
+      </div>
+      <div th:if="${param.logout}">
+         You have been logged out.
+      </div>
+
+      <form th:action="@{/login}" method="post">
+        <div class="m-5">
+          <h1 class="font-weight-bold">Please sign in</h1>
+
+          <div class="form-group">
+            <input type="text"   class="mx-auto w-50 form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="username" placeholder="Enter name">
+          </div>
+
+          <div class="form-group">
+            <input type="password" class=" mx-auto w-50 form-control" id="exampleInputPassword1" name="password" placeholder="Password">
+          </div>
+
+          <button type="submit" class="w-50 btn btn-primary">Sign in</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
+
+<style type="text/css">
+  .m-d {
+    display: block;
+    display: inline;
+    display: inline-block;
+  }
+</style>
