@@ -25,10 +25,5 @@ public class RoleService implements RoleServiceInterface {
         return roleRepository.findAll();
     }
 
-    @Override
-    public Role readRole(Long id) {
-        return roleRepository.getOne(id);
-    }
-
 
 }

@@ -9,6 +9,4 @@ public interface RoleServiceInterface {
 
     List<Role> listRoles();
 
-    Role readRole(Long id);
-
 }

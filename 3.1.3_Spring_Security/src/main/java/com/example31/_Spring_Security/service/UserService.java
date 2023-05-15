@@ -1,7 +1,6 @@
 package com.example31._Spring_Security.service;
 
 
-import com.example31._Spring_Security.model.Role;
 import com.example31._Spring_Security.model.User;
 import com.example31._Spring_Security.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +8,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -17,13 +15,11 @@ import java.util.List;
 public class UserService implements UserServiceInterface {
 
     private final UserRepository userRepository;
-    private final RoleService roleService;
-    private final BCryptPasswordEncoder encoder;
+   private final BCryptPasswordEncoder encoder;
 
     @Autowired
-    public UserService(UserRepository userRepository, RoleService roleService, BCryptPasswordEncoder encoder) {
+    public UserService(UserRepository userRepository, BCryptPasswordEncoder encoder) {
         this.userRepository = userRepository;
-        this.roleService = roleService;
         this.encoder = encoder;
     }
 
@@ -61,14 +57,6 @@ public class UserService implements UserServiceInterface {
         userRepository.deleteById(id);
     }
 
-    @Override
-    public List<Role> getSetOfRoles(List<String> rolesId) {
-        List<Role> roleList = new ArrayList<>();
-        for (String id : rolesId) {
-            roleList.add(roleService.readRole(Long.parseLong(id)));
-        }
-        return roleList;
-    }
 
     public User findByName(String name) {
         return userRepository.findByName(name);
